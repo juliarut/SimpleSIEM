@@ -1,0 +1,34 @@
+using Microsoft.AspNetCore.Mvc;
+using Services;
+using Data;
+using Models;
+
+namespace Controllers
+{
+    [ApiController]
+    [Route("api/logs")]
+    public class LogController : ControllerBase
+    {
+        private readonly LogService _logService;
+
+        public LogController()
+        {
+            var context = new SiemDbContext();
+            _logService = new LogService(context);
+        }
+
+        [HttpGet]
+        public IActionResult GetLogs()
+        {
+            var logs = _logService.GetAllLogs();
+            return Ok(logs);
+        }
+
+        [HttpPost]
+        public IActionResult AddLog([FromBody] LogEntry newLog)
+        {
+            _logService.AddLog(newLog);
+            return Ok(newLog);
+        }
+    }
+}
