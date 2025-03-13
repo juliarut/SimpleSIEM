@@ -4,10 +4,13 @@ using SimpleSIEM.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 builder.Services.AddDbContext<SiemDbContext>(options =>
     options.UseSqlite("Data Source=siem.db"));
 
+
 builder.Services.AddScoped<LogService>();
+
 
 builder.Services.AddControllers();
 
