@@ -1,9 +1,14 @@
 using Microsoft.EntityFrameworkCore;
+using SimpleSIEM.Models;
 
-public class SiemDbContext : DbContext
+namespace SimpleSIEM.Data
 {
-    public DbSet<LogEntry> Logs { get; set; }
+    public class SiemDbContext : DbContext
+    {
+        public SiemDbContext(DbContextOptions<SiemDbContext> options) : base(options)
+        {
+        }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options)
-        => options.UseSqlite("Data Source=siem.db");
+        public DbSet<LogEntry> Logs { get; set; }
+    }
 }

@@ -1,9 +1,9 @@
-using Models;
-using Data;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
+using SimpleSIEM.Data;
+using SimpleSIEM.Models;
 
-namespace Services
+namespace SimpleSIEM.Services
 {
     public class LogService
     {

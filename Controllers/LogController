@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Services;
-using Data;
-using Models;
+using SimpleSIEM.Services;
+using SimpleSIEM.Models;
 
-namespace Controllers
+namespace SimpleSIEM.Controllers
 {
     [ApiController]
     [Route("api/logs")]
@@ -11,10 +10,9 @@ namespace Controllers
     {
         private readonly LogService _logService;
 
-        public LogController()
+        public LogController(LogService logService)
         {
-            var context = new SiemDbContext();
-            _logService = new LogService(context);
+            _logService = logService;
         }
 
         [HttpGet]
